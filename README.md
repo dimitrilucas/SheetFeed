@@ -4,6 +4,20 @@ A native Apple silicon scanning app for the Epson ES-50 (and, likely, other scan
 driver). It drives the scanner through Apple's ImageCaptureCore framework and Epson's universal ES-50 driver
 (`/Library/Image Capture/Devices/EPSON ES017E.app`), so it needs no Rosetta.
 
+## Installing
+
+With [Homebrew](https://brew.sh) on an Apple silicon Mac (macOS 14 or later, with the Xcode Command Line Tools):
+
+```bash
+brew install dimitrilucas/tap/sheetfeed
+ln -sfn "$(brew --prefix)/opt/sheetfeed/SheetFeed.app" ~/Applications/SheetFeed.app
+```
+
+Homebrew builds SheetFeed on your Mac, so macOS opens it without a security warning. The second line puts it in
+your Applications folder. Update with `brew upgrade sheetfeed`.
+
+You also need Epson's ES-50 driver, which comes with Epson's macOS scanner software from epson.com.
+
 ## Using it
 
 1. Plug in the scanner and open **SheetFeed** (installed in `~/Applications`). The status bar turns green when it's ready.

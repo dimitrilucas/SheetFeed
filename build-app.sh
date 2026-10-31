@@ -2,17 +2,19 @@
 # Builds SheetFeed.app and installs it in ~/Applications (or the folder given as the first argument).
 #
 # Build output lives in ~/Library/Caches because files in an iCloud-synced Documents folder pick up
-# Finder metadata that code signing refuses.
+# Finder metadata that code signing refuses. The Homebrew formula overrides it with SHEETFEED_WORK and passes
+# --disable-sandbox in SHEETFEED_SWIFT_FLAGS, since Homebrew already builds inside its own sandbox.
 set -euo pipefail
 
 cd "$(dirname "$0")"
 DEST="${1:-$HOME/Applications}"
-WORK="$HOME/Library/Caches/SheetFeed"
+WORK="${SHEETFEED_WORK:-$HOME/Library/Caches/SheetFeed}"
 APP="$WORK/SheetFeed.app"
 VERSION="$(cat VERSION)"
+read -r -a SWIFT_FLAGS <<< "${SHEETFEED_SWIFT_FLAGS:-}"
 
-swift build --configuration release --scratch-path "$WORK/build"
-BIN="$(swift build --configuration release --scratch-path "$WORK/build" --show-bin-path)/SheetFeed"
+swift build --configuration release --scratch-path "$WORK/build" ${SWIFT_FLAGS[@]+"${SWIFT_FLAGS[@]}"}
+BIN="$(swift build --configuration release --scratch-path "$WORK/build" ${SWIFT_FLAGS[@]+"${SWIFT_FLAGS[@]}"} --show-bin-path)/SheetFeed"
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"

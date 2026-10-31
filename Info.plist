@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>SheetFeed</string>
 	<key>CFBundleIdentifier</key>
-	<string>local.sheetfeed.SheetFeed</string>
+	<string>io.github.dimitrilucas.SheetFeed</string>
 	<key>CFBundleExecutable</key>
 	<string>SheetFeed</string>
 	<key>CFBundleIconFile</key>
