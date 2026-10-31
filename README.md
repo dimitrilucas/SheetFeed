@@ -62,3 +62,9 @@ for the ES-50, which only scans one side; SheetFeed turns that off.
 
 Not included compared with Epson ScanSmart: direct upload to cloud services (use Share, or a Quick Save folder inside
 iCloud Drive/Dropbox), Word/Excel conversion, and brightness/contrast controls.
+
+## License
+
+SheetFeed is released under the [MIT License](LICENSE): anyone may use, copy, modify and share it, including in their
+own projects, as long as the copyright notice is kept. It depends on Epson's own macOS driver, which is not part of this
+project and comes under Epson's terms.
